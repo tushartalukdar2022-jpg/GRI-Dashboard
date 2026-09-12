@@ -1,0 +1,1874 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GRI — Indicators of Success Dashboard</title>
+<style>
+  :root {
+    --ink-primary: #0b0b0b;
+    --ink-secondary: #52514e;
+    --ink-muted: #898781;
+    --gridline: #e1e0d9;
+    --surface: #fcfcfb;
+    --fill: #2a78d6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--ink-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    padding: 28px clamp(16px, 4vw, 48px) 56px;
+  }
+  h1 { margin: 0 0 4px; font-size: clamp(22px, 4vw, 28px); }
+  .subtitle { color: var(--ink-secondary); font-size: 14px; margin-bottom: 28px; }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    border-top: 1px solid var(--gridline);
+    border-bottom: 1px solid var(--gridline);
+    margin-bottom: 32px;
+  }
+  .kpi-card { padding: 18px 20px; border-left: 1px solid var(--gridline); }
+  .kpi-card:first-child { border-left: none; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: var(--fill); }
+  .kpi-label { font-size: 12.5px; color: var(--ink-secondary); margin-top: 4px; }
+
+  h2 { font-size: 16px; margin: 0 0 16px; }
+  .vertical-section { margin-bottom: 40px; }
+  .vertical-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 210px;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .vertical-label { font-size: 13px; color: var(--ink-secondary); }
+  .vertical-track { background: var(--gridline); border-radius: 3px; height: 14px; overflow: hidden; }
+  .vertical-fill { background: var(--fill); height: 100%; border-radius: 3px 0 0 3px; }
+  .vertical-text { font-size: 12px; color: var(--ink-primary); }
+
+  .output-section { margin-bottom: 34px; }
+  .output-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid var(--fill);
+  }
+  .output-header-level { font-weight: 700; font-size: 14.5px; color: var(--ink-primary); }
+  .output-header-desc { font-size: 12.5px; color: var(--ink-secondary); }
+
+  .panels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .indicator-panel {
+    border: 1px solid var(--gridline);
+    border-radius: 8px;
+    padding: 14px 16px 10px;
+    background: #fff;
+  }
+  .output-panel { background: #f2f7fd; border-color: #cfe0f5; }
+  .panel-title { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+  .panel-desc { font-size: 11px; color: var(--ink-muted); margin-bottom: 12px; }
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 100px;
+    border-bottom: 1px solid var(--gridline);
+    padding-bottom: 2px;
+  }
+  .bar-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+  }
+  .bar-value { font-size: 10px; color: var(--ink-primary); margin-bottom: 2px; white-space: nowrap; }
+  .bar-track { width: 100%; max-width: 24px; height: 100%; display: flex; align-items: flex-end; }
+  .bar { width: 100%; background: var(--fill); border-radius: 3px 3px 0 0; min-height: 2px; }
+  .bar-axis-label { font-size: 8px; color: var(--ink-secondary); margin-top: 5px; white-space: nowrap; }
+
+  @media (max-width: 480px) {
+    .vertical-row { grid-template-columns: 90px 1fr; }
+    .vertical-text { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+  <h1>GRI — Indicators of Success Dashboard</h1>
+  <div class="subtitle">Bi-monthly reporting &bull; Oct 2025 through Jul-Aug 2026 &bull; generated 12 Sep 2026</div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+        <div class="kpi-value">70</div>
+        <div class="kpi-label">Indicators of Success tracked</div>
+      </div><div class="kpi-card">
+        <div class="kpi-value">45 / 70</div>
+        <div class="kpi-label">Indicators with actual reported data</div>
+      </div><div class="kpi-card">
+        <div class="kpi-value">Jul-Aug 2026</div>
+        <div class="kpi-label">Most recent bi-monthly period</div>
+      </div><div class="kpi-card">
+        <div class="kpi-value">31 / 45</div>
+        <div class="kpi-label">Reporting data this period</div>
+      </div>
+  </div>
+
+  <div class="vertical-section">
+    <h2>Reporting coverage by program area (Vertical)</h2>
+    <div class="vertical-row">
+        <div class="vertical-label">Finance</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:100.0%"></div></div>
+        <div class="vertical-text">16/16 indicators reporting data</div>
+      </div><div class="vertical-row">
+        <div class="vertical-label">Communication</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:100.0%"></div></div>
+        <div class="vertical-text">1/1 indicators reporting data</div>
+      </div><div class="vertical-row">
+        <div class="vertical-label">Fundraising</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:80.0%"></div></div>
+        <div class="vertical-text">8/10 indicators reporting data</div>
+      </div><div class="vertical-row">
+        <div class="vertical-label">LMS</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:41.7%"></div></div>
+        <div class="vertical-text">5/12 indicators reporting data</div>
+      </div><div class="vertical-row">
+        <div class="vertical-label">Program</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:50.0%"></div></div>
+        <div class="vertical-text">3/6 indicators reporting data</div>
+      </div><div class="vertical-row">
+        <div class="vertical-label">Program / M&amp;E</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:52.6%"></div></div>
+        <div class="vertical-text">10/19 indicators reporting data</div>
+      </div><div class="vertical-row">
+        <div class="vertical-label">Leadership &amp; Culutre</div>
+        <div class="vertical-track"><div class="vertical-fill" style="width:40.0%"></div></div>
+        <div class="vertical-text">2/5 indicators reporting data</div>
+      </div>
+  </div>
+
+  <div>
+    <h2>Bi-monthly indicator values, grouped by Output</h2>
+    
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.1</span>
+          <span class="output-header-desc">1,000 CSOs complete standardized organizational assessments</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.1</div>
+        <div class="panel-desc"># of CSOs completing assessments</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">20</div>
+                <div class="bar-track"><div class="bar" style="height:50%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">25</div>
+                <div class="bar-track"><div class="bar" style="height:62%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">40</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.1.1</div>
+        <div class="panel-desc"># of standardized, validated organizational assessment tool finalized</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:50%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.1.2</div>
+        <div class="panel-desc">#CSOs assessed</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">20</div>
+                <div class="bar-track"><div class="bar" style="height:43%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">25</div>
+                <div class="bar-track"><div class="bar" style="height:53%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">47</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">17</div>
+                <div class="bar-track"><div class="bar" style="height:36%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.1.3</div>
+        <div class="panel-desc"># of CSOs provided tailored assessment report</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">42</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">40</div>
+                <div class="bar-track"><div class="bar" style="height:95%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.2</span>
+          <span class="output-header-desc">750 CSOs implement improved financial management systems</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.2</div>
+        <div class="panel-desc"># of CSOs adopting revised financial management systems and policies</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">65</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.2.1</div>
+        <div class="panel-desc"># Validated training module devloped.</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">4</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">3</div>
+                <div class="bar-track"><div class="bar" style="height:75%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.2.2</div>
+        <div class="panel-desc">% of CSO participants demonstrating increased knowledge</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">61%</div>
+                <div class="bar-track"><div class="bar" style="height:66%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">93%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.2.3</div>
+        <div class="panel-desc">% of mentored CSOs</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">17%</div>
+                <div class="bar-track"><div class="bar" style="height:49%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">11%</div>
+                <div class="bar-track"><div class="bar" style="height:31%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2%</div>
+                <div class="bar-track"><div class="bar" style="height:6%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">12%</div>
+                <div class="bar-track"><div class="bar" style="height:34%"></div></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">6%</div>
+                <div class="bar-track"><div class="bar" style="height:17%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">35%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.2</span>
+          <span class="output-header-desc">750 CSOs implement improved governance systems.</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.2</div>
+        <div class="panel-desc"># of CSOs adopting revised governance and policies</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">35</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.2.1</div>
+        <div class="panel-desc"># Validated training module devloped.</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.2.2</div>
+        <div class="panel-desc">% of CSO participants demonstrating increased knowledge</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">32%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.2.3</div>
+        <div class="panel-desc">% of mentored CSOs</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">27%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.2</span>
+          <span class="output-header-desc">CSOs developed/updated standard policies</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.2</div>
+        <div class="panel-desc"># CSOs with complete policy package meeting minimum standards</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">35</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.2</span>
+          <span class="output-header-desc">750 CSOs implement improved safeguarding mechanisms</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.2</div>
+        <div class="panel-desc"># of CSOs adopting revised safeguarding mechanisms and policies</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">35</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.3</span>
+          <span class="output-header-desc">CSOs improve governance compliance</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.3</div>
+        <div class="panel-desc">% meeting ≥80% compliance criteria</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">79%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.3.1</div>
+        <div class="panel-desc"># of audits completed on governance compliance</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">55</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">22</div>
+                <div class="bar-track"><div class="bar" style="height:40%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">4</div>
+                <div class="bar-track"><div class="bar" style="height:7%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.3.2</div>
+        <div class="panel-desc"># of sessions conducted for peer-learning to share best practices in governance compliance</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">49</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:4%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">36</div>
+                <div class="bar-track"><div class="bar" style="height:73%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.3.3</div>
+        <div class="panel-desc">% of CSOs that address audit recommendations and show improved compliance scores in subsequent assessments</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">10%</div>
+                <div class="bar-track"><div class="bar" style="height:37%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">7%</div>
+                <div class="bar-track"><div class="bar" style="height:26%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">27%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.3</span>
+          <span class="output-header-desc">CSOs improve financial compliance</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.3</div>
+        <div class="panel-desc">% meeting ≥80% compliance criteria</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">80%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.3.1</div>
+        <div class="panel-desc"># of audits completed on finance compliance</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">18</div>
+                <div class="bar-track"><div class="bar" style="height:39%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">40</div>
+                <div class="bar-track"><div class="bar" style="height:87%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">46</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">13</div>
+                <div class="bar-track"><div class="bar" style="height:28%"></div></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">12</div>
+                <div class="bar-track"><div class="bar" style="height:26%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">43</div>
+                <div class="bar-track"><div class="bar" style="height:93%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.3.2</div>
+        <div class="panel-desc"># of sessions conducted for peer-learning to share best practices in finance compliance</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:20%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">5</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:40%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:20%"></div></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:40%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:40%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.3.3</div>
+        <div class="panel-desc">% of CSOs that address audit recommendations and show improved compliance scores in subsequent assessments</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">4%</div>
+                <div class="bar-track"><div class="bar" style="height:36%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">11%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">7%</div>
+                <div class="bar-track"><div class="bar" style="height:64%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">3%</div>
+                <div class="bar-track"><div class="bar" style="height:27%"></div></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">5%</div>
+                <div class="bar-track"><div class="bar" style="height:45%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">7%</div>
+                <div class="bar-track"><div class="bar" style="height:64%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 1.4</span>
+          <span class="output-header-desc">CSOs adopt sustainable fundraising strategies</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 1.4</div>
+        <div class="panel-desc"># CSOs implementing multi-source fundraising</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">20</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.4.1</div>
+        <div class="panel-desc"># of CSOs trained on fundraising and donor diversification</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">93</div>
+                <div class="bar-track"><div class="bar" style="height:77%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">86</div>
+                <div class="bar-track"><div class="bar" style="height:71%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">77</div>
+                <div class="bar-track"><div class="bar" style="height:64%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">121</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.4.2</div>
+        <div class="panel-desc"># of CSOs mentored on written fundraising strategies</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">24</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 1.4.5</div>
+        <div class="panel-desc">% of CSOs submitting at least three proposals scoring ≥60% on proposal quality rubric</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1%</div>
+                <div class="bar-track"><div class="bar" style="height:4%"></div></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">24%</div>
+                <div class="bar-track"><div class="bar" style="height:67%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">36%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 2.1</span>
+          <span class="output-header-desc">1,000 CSOs develop ToC &amp; MEL frameworks</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 2.1.1</div>
+        <div class="panel-desc"># of CSOs participating in structured training sessions on ToC and MEL frameworks</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">70</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 3.1</span>
+          <span class="output-header-desc">200 leaders from socially excluded and vulnerable communities complete leadership development programs.</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 3.1</div>
+        <div class="panel-desc"># leaders completing training</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">72</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 3.1.2</div>
+        <div class="panel-desc"># of leadership training sessions conducted</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">3</div>
+                <div class="bar-track"><div class="bar" style="height:75%"></div></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">4</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:50%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:25%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">2</div>
+                <div class="bar-track"><div class="bar" style="height:50%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 3.2</span>
+          <span class="output-header-desc">Donor roundtables and briefings organized to build funder alignment.</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 3.2</div>
+        <div class="panel-desc"># of donor roundtables / briefings organized</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 3.4</span>
+          <span class="output-header-desc">Grassroots CSOs demonstrate strengthened partnerships with CSR and regional philanthropic actors</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 3.4.1</div>
+        <div class="panel-desc">Mapping report produced</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">5</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 3.4.2</div>
+        <div class="panel-desc">No. of outreach meetings conducted</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">12</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 3.4.3</div>
+        <div class="panel-desc">No. of proposals developed</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:4%"></div></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">24</div>
+                <div class="bar-track"><div class="bar" style="height:73%"></div></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">33</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 4.1</span>
+          <span class="output-header-desc">1,000 CSOs registered &amp; active on LMS</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 4.1.2</div>
+        <div class="panel-desc"># of CSOs onboarded by category on LMS platform</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">13</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 4.1.3</div>
+        <div class="panel-desc"># of focal points of CSO trained to platform navigation.</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">13</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 4.1</span>
+          <span class="output-header-desc">CSOs developed (Vision, Mission, Objectives, Strategies, Action Plan)</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 4.1</div>
+        <div class="panel-desc"># CSOs finalizing VMOSA</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">68</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 4.2</span>
+          <span class="output-header-desc">750 CSOs complete atleast 3 e-learning modules</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 4.2.1</div>
+        <div class="panel-desc"># of e-learning modules developed</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 4.2.2</div>
+        <div class="panel-desc"># of toolkits/templates resources integrated on LMS</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">3</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 4.3</span>
+          <span class="output-header-desc">CSOs apply digital learning</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 4.3.1</div>
+        <div class="panel-desc"># of assessment/ feedback rounds conducted</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">8</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 5.1</span>
+          <span class="output-header-desc">1,000 CSOs complete annual assessments</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 5.1</div>
+        <div class="panel-desc"># CSOs completing assessments</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">68</div>
+                <div class="bar-track"><div class="bar" style="height:54%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">125</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">57</div>
+                <div class="bar-track"><div class="bar" style="height:46%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 5.1.1</div>
+        <div class="panel-desc"># of annual assessment tool developed</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 5.1.2</div>
+        <div class="panel-desc"># of CSO staff trained in using the assessment tool</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">70</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">28</div>
+                <div class="bar-track"><div class="bar" style="height:40%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div>
+      <div class="indicator-panel">
+        <div class="panel-title">Activity 5.1.3</div>
+        <div class="panel-desc"># CSOs completed baseline and endline organizational assessments</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">68</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">57</div>
+                <div class="bar-track"><div class="bar" style="height:84%"></div></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 5.2</span>
+          <span class="output-header-desc">3 action research reports published to inform adaptive programming and improve practices across the CSO sector</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 5.2</div>
+        <div class="panel-desc"># of action research studies completed</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">1</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+      <div class="output-section">
+        <div class="output-header">
+          <span class="output-header-level">Output 5.3</span>
+          <span class="output-header-desc">CSOs demonstrate continuous improvement</span>
+        </div>
+        <div class="panels-grid">
+      <div class="indicator-panel output-panel">
+        <div class="panel-title">Output 5.3</div>
+        <div class="panel-desc">% showing improvements based on MEL</div>
+        <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">O’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">N-D’25</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">85%</div>
+                <div class="bar-track"><div class="bar" style="height:100%"></div></div>
+                <div class="bar-axis-label">J-F’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-A’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">M-J’26</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar-value">&nbsp;</div>
+                <div class="bar-track"></div>
+                <div class="bar-axis-label">J-A’26</div>
+              </div></div>
+      </div></div>
+      </div>
+  </div>
+</body>
+</html>
